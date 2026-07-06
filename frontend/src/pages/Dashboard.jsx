@@ -1,30 +1,24 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+const DEMO_STATS = {
+  totalClients: "6389",
+  accountBalance: "$ 46,760.89",
+  newSales: "376",
+  pendingContacts: 35,
+};
+
 function Dashboard() {
   const [stats, setStats] = useState({
     totalClients: "...",
     accountBalance: "Loading...",
     newSales: "...",
-    pendingContacts: 0 // Used implicitly or if we map it later
+    pendingContacts: 35,
   });
-  const [dbStatus, setDbStatus] = useState("Checking System...");
+  const [dbStatus, setDbStatus] = useState("🔒 Demo Mode (no backend)");
 
   useEffect(() => {
-    // Fetch Stats
-    fetch('http://localhost:5000/api/stats')
-      .then(res => res.json())
-      .then(data => setStats(data))
-      .catch(err => console.error("Error fetching stats:", err));
-
-    // Check DB
-    fetch('http://localhost:5000/api/test-db')
-      .then(res => {
-        if (!res.ok) throw new Error("Backend Error");
-        return res.json();
-      })
-      .then(data => setDbStatus("✅ System Online (DB Connected)"))
-      .catch(() => setDbStatus("❌ System Offline (DB Error)"));
+    setStats(DEMO_STATS);
   }, []);
 
   return (

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Home, Calculator, CheckSquare, Users, MousePointer } from 'lucide-react';
 import Header from './Header';
 
 function Layout() {
@@ -33,17 +34,15 @@ function Layout() {
     { path: '/contador', label: 'Contador', icon: 'cursor' },
   ];
 
+  const icons = {
+    home: Home,
+    calculator: Calculator,
+    tasks: CheckSquare,
+    chart: Users,
+    cursor: MousePointer,
+  };
+
   const getIcon = (iconName) => {
-    const { Home, Calculator, CheckSquare, Users, MousePointer } = require('lucide-react');
-
-    const icons = {
-      home: Home,
-      calculator: Calculator,
-      tasks: CheckSquare,
-      chart: Users,
-      cursor: MousePointer,
-    };
-
     const IconComponent = icons[iconName];
     return <IconComponent className="w-5 h-5" />;
   };
