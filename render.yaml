@@ -1,0 +1,58 @@
+# ══════════════════════════════════════════
+# REACT-Diego-Dizzi-Dashboard — Render Blueprint (Full Stack)
+# ══════════════════════════════════════════
+# Deploy: conecta repo → New → Blueprint → selecciona este archivo
+# https://render.com/docs/blueprint-spec
+
+services:
+  # PostgreSQL 15
+  - type: pserv
+    name: dashboard-db
+    plan: free
+    region: oregon
+    ipAllowList: []
+    databaseName: dashboard_db
+    user: postgres
+
+  # Backend API (Node.js/Express)
+  - type: web
+    name: dashboard-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    region: oregon
+    plan: free
+    envVars:
+      - key: DB_USER
+        value: postgres
+      - key: DB_HOST
+        fromDatabase:
+          name: dashboard-db
+          property: host
+      - key: DB_NAME
+        value: dashboard_db
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: dashboard-db
+          property: password
+      - key: DB_PORT
+        fromDatabase:
+          name: dashboard-db
+          property: port
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "5000"
+    healthCheckPath: /api/health
+
+  # Frontend (React + Nginx)
+  - type: web
+    name: dashboard-frontend
+    runtime: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    region: oregon
+    plan: free
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://dashboard-backend.onrender.com

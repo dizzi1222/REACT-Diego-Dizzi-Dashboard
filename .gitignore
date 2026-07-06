@@ -26,3 +26,5 @@ yarn-error.log*
 ./Referencias/
 ./Referencias/calculadora-react-freecodecamp-master/*
 ./Referencias/estevanmaito-windmill-dashboard-1.0.2-0-g27e1092/*
+frontend/build/
+frontend/node_modules/

@@ -1,14 +1,8 @@
 [build]
-  command = "npm run build"
+  command = "pnpm build"
   publish = "build"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
