@@ -1,14 +1,19 @@
 # 📌 Dizzi Dashboard (Componentes de React)
 
 <p align="center">
-  <a href="https://reactdashboarddh-one.vercel.app/">
+  <a href="https://react-dashboard-ten-delta.vercel.app/">
     <img src="https://img.shields.io/badge/LIVE-React_Dashboard-8A2BE2?style=for-the-badge&logo=vercel" alt="Live Demo" />
   </a>
 </p>
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/dizzi1222/REACT-Diego-Dizzi-Dashboard)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/dizzi1222/REACT-Diego-Dizzi-Dashboard)
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/dizzi1222/REACT-Diego-Dizzi-Dashboard)
+<p align="center">
+  <a href="https://proyecto-app-mcsd.vercel.app/">
+    <img src="https://img.shields.io/badge/MCSD-Manual_Conducción-00d9ff?style=for-the-badge&logo=vercel" alt="MCSD" />
+  </a>
+  <a href="https://fc-tic-service-github-6c-diego-05.vercel.app/">
+    <img src="https://img.shields.io/badge/Tics_Service-Papelería-Center-7952B3?style=for-the-badge&logo=vercel" alt="Tics Service" />
+  </a>
+</p>
 
 Hice uso de react-router-dom para enlazar proyectos.
 https://youtu.be/AXzuRJhAu_s?si=V1xwPuRQEJBvMCWj
@@ -21,12 +26,13 @@ Esta aplicación fue creada por [Estefania Cassingena Navone](https://twitter.co
 
 ## 🚀 Deploy Options
 
-| Plataforma | Config | Comando |
-|------------|--------|---------|
-| **Vercel** | `vercel.json` | `vercel --prod` |
-| **Netlify** | `netlify.toml` | `netlify deploy --prod --dir=build` |
-| **Render** | `Dockerfile` + `nginx.conf` | Auto via Blueprint |
-| **Docker** | `Dockerfile` + `nginx.conf` | `docker build -t dashboard . && docker run -p 80:80 dashboard` |
+| Plataforma | Config | Comando | Live |
+|------------|--------|---------|------|
+| **Vercel** | `vercel.json` | `vercel --prod` | [react-dashboard](https://react-dashboard-ten-delta.vercel.app/) |
+| **Netlify** | `netlify.toml` | `netlify deploy --prod --dir=build` | — |
+| **Docker** | `Dockerfile` + `nginx.conf` | `docker build -t dashboard . && docker run -p 80:80 dashboard` | — |
+
+> **Migrado de CRA a Vite** — el build se ejecuta desde `frontend/` con `vite build`.
 
 ## Ejecutar la Aplicación
 
