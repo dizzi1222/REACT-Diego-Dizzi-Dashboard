@@ -28,7 +28,6 @@ function Register() {
     setError('');
     setSuccess('');
 
-    // Validaciones
     if (formData.password !== formData.confirmPassword) {
       setError('Las contraseñas no coinciden');
       return;
@@ -55,47 +54,42 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-500 to-pink-500 p-4">
-      <div className="absolute inset-0 bg-black opacity-20"></div>
+    <div className="min-h-screen flex items-center justify-center bg-[#0a0615] p-4 relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-48 -right-48 w-96 h-96 bg-purple-600 rounded-full opacity-20 blur-[100px] animate-float" />
+        <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-pink-600 rounded-full opacity-20 blur-[100px] animate-float" style={{ animationDelay: '-3s' }} />
+      </div>
 
-      <div className="relative z-10 w-full max-w-md">
-        {/* Card con glassmorphism */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 p-8 animate-fade-in-down">
-          {/* Logo/Header */}
+      <div className="relative z-10 w-full max-w-md animate-scale-in">
+        <div className="bg-white/[0.04] backdrop-blur-2xl rounded-3xl border border-white/[0.08] p-8 shadow-2xl">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full mb-4 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl mb-4 shadow-lg shadow-purple-600/20">
               <UserPlus className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-3xl font-bold text-white mb-2">Nuevo Usuario</h1>
-            <p className="text-white/80">Solo administradores pueden crear usuarios</p>
+            <h1 className="text-2xl font-bold text-white mb-1">Nuevo Usuario</h1>
+            <p className="text-gray-500 text-sm">Solo administradores pueden crear usuarios</p>
           </div>
 
-          {/* Error Alert */}
           {error && (
-            <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg flex items-center gap-3 animate-shake">
-              <AlertCircle className="w-5 h-5 text-red-200" />
-              <p className="text-red-100 text-sm">{error}</p>
+            <div className="mb-6 p-3 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center gap-3 animate-shake">
+              <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+              <p className="text-red-300 text-sm">{error}</p>
             </div>
           )}
 
-          {/* Success Alert */}
           {success && (
-            <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-green-200" />
-              <p className="text-green-100 text-sm">{success}</p>
+            <div className="mb-6 p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center gap-3">
+              <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+              <p className="text-emerald-300 text-sm">{success}</p>
             </div>
           )}
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Name Input */}
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-white/90 mb-2">
-                Nombre
-              </label>
+              <label className="block text-xs font-medium text-gray-400 mb-1.5 ml-1">Nombre</label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-white/50" />
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                  <User className="h-4 w-4 text-gray-600" />
                 </div>
                 <input
                   id="name"
@@ -104,20 +98,17 @@ function Register() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
+                  className="block w-full pl-10 pr-3.5 py-3 border border-white/[0.08] rounded-xl bg-white/[0.04] text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500/40 focus:border-purple-500/40 transition-all hover:bg-white/[0.06] text-sm"
                   placeholder="Juan Pérez"
                 />
               </div>
             </div>
 
-            {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-white/90 mb-2">
-                Email
-              </label>
+              <label className="block text-xs font-medium text-gray-400 mb-1.5 ml-1">Email</label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-white/50" />
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                  <Mail className="h-4 w-4 text-gray-600" />
                 </div>
                 <input
                   id="email"
@@ -126,20 +117,17 @@ function Register() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
+                  className="block w-full pl-10 pr-3.5 py-3 border border-white/[0.08] rounded-xl bg-white/[0.04] text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500/40 focus:border-purple-500/40 transition-all hover:bg-white/[0.06] text-sm"
                   placeholder="usuario@ejemplo.com"
                 />
               </div>
             </div>
 
-            {/* Password Input */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-white/90 mb-2">
-                Contraseña
-              </label>
+              <label className="block text-xs font-medium text-gray-400 mb-1.5 ml-1">Contraseña</label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-white/50" />
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                  <Lock className="h-4 w-4 text-gray-600" />
                 </div>
                 <input
                   id="password"
@@ -148,20 +136,17 @@ function Register() {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
+                  className="block w-full pl-10 pr-3.5 py-3 border border-white/[0.08] rounded-xl bg-white/[0.04] text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500/40 focus:border-purple-500/40 transition-all hover:bg-white/[0.06] text-sm"
                   placeholder="••••••••"
                 />
               </div>
             </div>
 
-            {/* Confirm Password Input */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-white/90 mb-2">
-                Confirmar Contraseña
-              </label>
+              <label className="block text-xs font-medium text-gray-400 mb-1.5 ml-1">Confirmar Contraseña</label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-white/50" />
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                  <Lock className="h-4 w-4 text-gray-600" />
                 </div>
                 <input
                   id="confirmPassword"
@@ -170,21 +155,20 @@ function Register() {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
+                  className="block w-full pl-10 pr-3.5 py-3 border border-white/[0.08] rounded-xl bg-white/[0.04] text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500/40 focus:border-purple-500/40 transition-all hover:bg-white/[0.06] text-sm"
                   placeholder="••••••••"
                 />
               </div>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 mt-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold rounded-xl shadow-lg shadow-purple-600/20 hover:shadow-xl hover:shadow-purple-600/30 transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed text-sm"
             >
               {isLoading ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></div>
+                  <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/30 border-t-white" />
                   <span>Creando usuario...</span>
                 </>
               ) : (
@@ -196,11 +180,10 @@ function Register() {
             </button>
           </form>
 
-          {/* Footer */}
           <div className="mt-6 text-center">
             <button
               onClick={() => navigate('/')}
-              className="text-white/80 hover:text-white text-sm underline transition-colors"
+              className="text-gray-500 hover:text-gray-300 text-sm transition-colors"
             >
               Volver al Dashboard
             </button>

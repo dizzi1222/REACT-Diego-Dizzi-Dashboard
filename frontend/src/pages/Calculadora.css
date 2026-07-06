@@ -1,14 +1,3 @@
-.App {
-  height: 100vh;
-  padding-top: 10px;
-  background-color: #1b1b32;
-  font-family: Lato, sans-serif;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
 .freecodecamp-logo-contenedor {
   width: 100%;
   height: 50px;

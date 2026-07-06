@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Bell, Sun, Moon, LogOut, User, Menu } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -13,25 +12,25 @@ function Header({ dark, toggleTheme, toggleSideMenu }) {
   };
 
   return (
-    <header className="z-10 py-4 bg-white dark:bg-gray-800 shadow-md">
-      <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
-        {/* Mobile hamburger - synced with sidebar (lg:hidden) */}
+    <header className="z-10 py-3 bg-white dark:bg-[#0d081d] border-b border-gray-200/50 dark:border-white/[0.06]">
+      <div className="container flex items-center justify-between h-full px-6 mx-auto">
+        {/* Mobile hamburger */}
         <button
-          className="header-icon-btn lg:hidden mr-5 -ml-1"
+          className="lg:hidden mr-4 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/[0.06] transition-colors text-gray-500 dark:text-gray-400"
           onClick={toggleSideMenu}
           aria-label="Menu"
         >
-          <Menu className="w-6 h-6" />
+          <Menu className="w-5 h-5" />
         </button>
 
         {/* Search Bar */}
         <div className="flex justify-center flex-1 lg:mr-32">
-          <div className="relative w-full max-w-xl mr-6">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+          <div className="relative w-full max-w-xl">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3.5">
               <Search className="w-4 h-4 text-gray-400" />
             </div>
             <input
-              className="w-full py-2 pl-10 pr-4 text-sm text-gray-700 bg-gray-100 border-0 rounded-md dark:bg-gray-700 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              className="w-full py-2 pl-10 pr-4 text-sm text-gray-700 bg-gray-100 border-0 rounded-xl dark:bg-white/[0.04] dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/30 hover:bg-gray-200 dark:hover:bg-white/[0.06] transition-all"
               type="text"
               placeholder="Search for projects"
               aria-label="Search"
@@ -39,58 +38,47 @@ function Header({ dark, toggleTheme, toggleSideMenu }) {
           </div>
         </div>
 
-        {/* Right side icons - Estilo minimalista Windmill */}
-        <ul className="flex items-center space-x-4">
-          {/* Theme Toggle */}
+        {/* Right icons */}
+        <ul className="flex items-center space-x-1">
           <li>
             <button
-              className="header-icon-btn"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/[0.06] transition-colors text-gray-500 dark:text-gray-400"
               onClick={toggleTheme}
               aria-label="Toggle color mode"
             >
-              {dark ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
+              {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
           </li>
 
-          {/* Notifications */}
           <li className="relative">
             <button
-              className="header-icon-btn"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/[0.06] transition-colors text-gray-500 dark:text-gray-400"
               aria-label="Notifications"
             >
               <Bell className="w-5 h-5" />
-              <span
-                aria-hidden="true"
-                className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"
-              ></span>
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white dark:ring-[#0d081d]" />
             </button>
           </li>
 
-          {/* Profile */}
           <li>
             <button
-              className="header-icon-btn"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/[0.06] transition-colors"
               aria-label="Account"
             >
               {user ? (
-                <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white font-medium text-sm">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white font-medium text-sm shadow-lg shadow-purple-600/20">
                   {user.name?.charAt(0).toUpperCase() || 'D'}
                 </div>
               ) : (
-                <User className="w-5 h-5" />
+                <User className="w-5 h-5 text-gray-500 dark:text-gray-400" />
               )}
             </button>
           </li>
 
-          {/* Logout */}
           <li>
             <button
               onClick={handleLogout}
-              className="header-icon-btn"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/[0.06] transition-colors text-gray-500 dark:text-gray-400"
               aria-label="Logout"
             >
               <LogOut className="w-5 h-5" />
